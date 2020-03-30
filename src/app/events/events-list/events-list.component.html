@@ -1,7 +1,5 @@
-<div class="container shadow">
-  <p>Date / time</p>
-  <h2>Title</h2>
-  <p>Description</p>
-  <div class="button btn btn-primary">Subscribe</div>
-  <div class="button btn btn-secondary">Read More</div>
-</div>
+<!-- <div class="container shadow"> -->
+    <app-event-item *ngFor = "let eventElement of events"
+    [event] = "eventElement"
+    ></app-event-item>
+<!-- </div> -->
