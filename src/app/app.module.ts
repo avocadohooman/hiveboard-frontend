@@ -6,6 +6,8 @@ import { EventsComponent } from './events/events.component';
 import { EventsListComponent } from './events/events-list/events-list.component';
 import { EventsDetailComponent } from './events/events-detail/events-detail.component';
 import { EventItemComponent } from './events/events-list/event-item/event-item.component';
+import { EventsDetailElementComponent } from './events/events-detail/events-detail-element/events-detail-element.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -13,10 +15,12 @@ import { EventItemComponent } from './events/events-list/event-item/event-item.c
     EventsComponent,
     EventsListComponent,
     EventsDetailComponent,
-    EventItemComponent
+    EventItemComponent,
+    EventsDetailElementComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

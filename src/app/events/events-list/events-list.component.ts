@@ -1,21 +1,20 @@
 import { Component, OnInit } from '@angular/core';
-import { EventStruct } from '../event_struct.model';
-import { EventService } from '../event.service';
+import { HttpService } from '../../http.service';
 
 @Component({
   selector: 'app-events-list',
   templateUrl: './events-list.component.html',
   styleUrls: ['./events-list.component.css'],
-  providers: [EventService]
 })
 export class EventsListComponent implements OnInit {
 
-  events: EventStruct[];
+  http_event: Object;
 
-  constructor(private eventService: EventService) { }
+  constructor(private _http: HttpService) { }
 
   ngOnInit(): void {
-    this.events = this.eventService.getEvents();
+    this._http.getEvents().subscribe(data => {
+      this.http_event = data;
+    });
   }
-
 }

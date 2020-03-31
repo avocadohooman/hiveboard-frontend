@@ -1,10 +1,10 @@
 <div class="container shadow">
   <div class="d-flex justify-content-between">
-    <p class="date">{{ event.date }}</p>
-    <p class="tag">{{ event.tag }}</p>
+    <p class="tag">{{ _events.begin_at }}</p>
+    <!-- <p class="date">{{ _events.name }}</p> -->
   </div>
-  <h4>{{ event.title }}</h4>
-  <p>{{ event.description }}</p>
+  <h4>{{ _events.name }}</h4>
+  <p>{{ _events.description.slice(0, 120) }} ...</p>
   <div class="d-flex flex-row-reverse">
     <button class="btn btn-secondary">Read More</button>
     <button class="btn btn-primary">Subscribe</button>

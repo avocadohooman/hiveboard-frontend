@@ -1,5 +1,3 @@
-<!-- <div class="container shadow"> -->
-    <app-event-item *ngFor = "let eventElement of events"
-    [event] = "eventElement"
-    ></app-event-item>
-<!-- </div> -->
+ <app-event-item *ngFor = "let eventElement of http_event"
+  [_events] = "eventElement"
+  ></app-event-item>
