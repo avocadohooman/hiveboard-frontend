@@ -17,3 +17,26 @@
   background-color: transparent;
   border: none;
 }
+
+.waw {
+  margin-top: 40px;
+  font-weight: 500;
+}
+
+.when-detail {
+  font-weight: 600;
+  color: #E39032;
+}
+
+.description-detail{
+  font-weight: 200;
+}
+
+.btn-danger{
+  background-color: #E39032;
+  border: none;
+  border-radius: 3px;
+  min-height: 50px;
+  font-size: larger;
+  font-weight: 300;
+}

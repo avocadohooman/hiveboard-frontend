@@ -3,10 +3,10 @@
     <p class="date">{{ events.begin_at }}</p>
     <!-- <p class="date">{{ events.name }}</p> -->
   </div>
-  <h4>{{ events.name }}</h4>
+  <h4 class="event-title">{{ events.name }}</h4>
   <p>{{ events.description.slice(0, 120) }} ...</p>
   <div class="d-flex flex-row-reverse">
     <a href="#" routerLink="/event/{{ events.id }}" class="btn btn-secondary">Read More</a>
-    <button class="btn btn-primary">Subscribe</button>
+    <button class="btn btn-primary">Sign Up</button>
   </div>
 </div>

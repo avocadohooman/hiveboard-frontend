@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { ActivatedRoute } from '@angular/router'
 import { HttpService } from 'src/app/http.service';
+import moment from "moment"; moment().format;
 
 @Component({
   selector: 'app-events-detail',
@@ -20,9 +21,9 @@ export class EventsDetailComponent implements OnInit {
   }
 
   getOne(){
-    console.log(this.id);
     this.http.getOne(this.id).subscribe(data =>{
       this.event = data;
+      this.event.begin_at = moment(this.event.begin_at).format('ddd, MMM D @ hh:mm A');
     })
   }
 }
