@@ -15,4 +15,7 @@ export class HttpService {
   getEvents(){
     return this.http.get(this.baseURL)
   }
+  getOne(id: any){
+    return this.http.get(this.baseURL+id);
+  }
 }
