@@ -7,6 +7,13 @@
   <p>{{ events.description.slice(0, 120) }} ...</p>
   <div class="d-flex flex-row-reverse">
     <a href="#" routerLink="/event/{{ events.id }}" class="btn btn-secondary">Read More</a>
-    <button class="btn btn-primary">Sign Up</button>
+    <div>
+      <ng-template [ngIf] = "token === false" [ngIfElse] = "registered">
+        <button class="btn btn-primary" (click) = signUp()>Sign Up</button>
+      </ng-template>
+      <ng-template #registered>
+        <button class="btn btn-disabled" disabled>Signed Up</button>
+      </ng-template>
+    </div>
   </div>
 </div>

@@ -11,11 +11,23 @@ import moment from "moment"; moment().format;
 export class EventItemComponent implements OnInit {
 
   @Input() events: any;
+  user: any;
+  token = false;
 
-  constructor() {
-   }
+  constructor(private http: HttpService) { }
 
   ngOnInit(): void {
     this.events.begin_at = moment(this.events.begin_at).format('ddd, MMM D • YYYY @ hh:mm A');
+    this.getUser();
+  }
+
+  getUser(){
+    this.http.getUser().subscribe(data =>{
+      this.user = data;
+    })
+  }
+
+  signUp(){
+    this.token = true;
   }
 }
