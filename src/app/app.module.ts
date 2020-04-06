@@ -8,6 +8,17 @@ import { EventsDetailComponent } from './events/events-list/event-item/events-de
 import { EventItemComponent } from './events/events-list/event-item/event-item.component';
 import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
+import { EventCreationComponent } from './events/event-creation/event-creation.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatButtonModule } from '@angular/material/button'
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { FormsModule } from '@angular/forms';
+import { MatInputModule } from '@angular/material/input';
+import { ReactiveFormsModule } from '@angular/forms';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+
+
 
 @NgModule({
   declarations: [
@@ -15,13 +26,22 @@ import { AppRoutingModule } from './app-routing.module';
     EventsComponent,
     EventsListComponent,
     EventsDetailComponent,
-    EventItemComponent
+    EventItemComponent,
+    EventCreationComponent
     ],
   imports: [
     BrowserModule,
     HttpClientModule,
-    AppRoutingModule
-  ],
+    AppRoutingModule,
+    BrowserAnimationsModule,
+    MatButtonModule,
+    MatFormFieldModule,
+    FormsModule,
+    MatInputModule,
+    ReactiveFormsModule,
+    MatAutocompleteModule,
+    MatDatepickerModule
+    ],
   providers: [],
   bootstrap: [AppComponent]
 })
