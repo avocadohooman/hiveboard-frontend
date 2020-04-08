@@ -8,7 +8,7 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 ## Prerequisites 
 
 ```
-https://github.com/avocadohooman/hiveboard-frontend.git
+git clone https://github.com/avocadohooman/hiveboard-frontend.git
 cd hiveboard-frontend
 npm install
 ```
