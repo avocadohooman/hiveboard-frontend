@@ -1,4 +1,9 @@
 <h2 class="header">From hivers you follow</h2>
+<!-- <ul>
+  <li *ngFor="let event of fire_event">
+    {{ event.name }}
+  </li>
+</ul> -->
 <app-event-item *ngFor = "let eventElement of http_event"
   [events] = "eventElement">
 </app-event-item>

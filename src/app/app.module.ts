@@ -17,7 +17,11 @@ import { MatInputModule } from '@angular/material/input';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatDatepickerModule } from '@angular/material/datepicker';
-
+import { AngularFireModule } from '@angular/fire';
+import { AngularFireAnalyticsModule } from '@angular/fire/analytics';
+import { AngularFirestoreModule } from '@angular/fire/firestore';
+import { AngularFireDatabaseModule } from '@angular/fire/database'
+import { environment } from '../environments/environment';
 
 
 @NgModule({
@@ -40,7 +44,11 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
     MatInputModule,
     ReactiveFormsModule,
     MatAutocompleteModule,
-    MatDatepickerModule
+    MatDatepickerModule,
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFireAnalyticsModule,
+    AngularFirestoreModule,
+    AngularFireDatabaseModule
     ],
   providers: [],
   bootstrap: [AppComponent]

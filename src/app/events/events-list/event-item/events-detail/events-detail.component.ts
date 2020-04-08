@@ -17,7 +17,9 @@ export class EventsDetailComponent implements OnInit {
 
   ngOnInit(): void {
     this.id = this.router.snapshot.params.id;
+    console.log(this.id);
     this.getOne();
+    // this.getOneFire();
   }
 
   getOne(){
@@ -26,4 +28,11 @@ export class EventsDetailComponent implements OnInit {
       this.event.begin_at = moment(this.event.begin_at).format('ddd, MMM D @ hh:mm A');
     })
   }
+
+  // getOneFire(){
+  //   this.http.getOneFire(this.id).subscribe(data =>{
+  //     this.event = data;
+  //     console.log(data);
+  //   })
+  // }
 }

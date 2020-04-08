@@ -9,6 +9,7 @@ import { HttpService } from '../../http.service';
 export class EventsListComponent implements OnInit {
 
   http_event: Object;
+  fire_event: any;
 
   constructor(private _http: HttpService) { }
 
@@ -16,5 +17,9 @@ export class EventsListComponent implements OnInit {
     this._http.getEvents().subscribe(data => {
       this.http_event = data;
     });
+    // this._http.getFire().subscribe(data=>{
+    //   console.log(data);
+    //   this.fire_event = data;
+    // });
   }
 }

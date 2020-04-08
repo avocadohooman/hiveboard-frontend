@@ -2,15 +2,16 @@
   <div class="d-flex flex-row-reverse pt-5">
     <a href="#" routerLink="/" class="btn btn-primary btn-circle btn-sm"></a>
 </div>
+
 <div class="container">
     <mat-form-field class="example-full-width">
       <mat-label>Event Title</mat-label>
-      <input matInput placeholder="Ex. CV Workshop" value="">
+      <input matInput placeholder="Ex. CV Workshop" value="" [(ngModel)]="name" required>
     </mat-form-field>
 
     <mat-form-field class="example-full-width">
       <mat-label>Location</mat-label>
-      <input matInput placeholder="Ex. Hive Lobby" value="">
+      <input matInput placeholder="Ex. Hive Lobby" value="" [(ngModel)]="location" required>
     </mat-form-field>
 
     <mat-form-field class="example-full-width">
@@ -18,7 +19,8 @@
       <input type="text"
       matInput
       [formControl] = "myControl"
-      [matAutocomplete] = "auto">
+      [matAutocomplete] = "auto"
+      [(ngModel)]="organiser" required>
       <mat-autocomplete #auto = "matAutocomplete">
         <mat-option *ngFor = "let i of filteredOptions | async" [value] = "i">
           {{ i }}
@@ -28,7 +30,7 @@
 
     <mat-form-field class="example-full-width">
       <mat-label>Tell peolpe more about the event</mat-label>
-      <textarea matInput placeholder="Ex. This event is about ..."></textarea>
+      <textarea matInput placeholder="Ex. This event is about ..." [(ngModel)]="description" required></textarea>
     </mat-form-field>
-  <button class="btn-block btn-danger">Create</button>
+  <button class="btn-block btn-danger" (click)="onAddSubmit()">Create</button>
 </div>

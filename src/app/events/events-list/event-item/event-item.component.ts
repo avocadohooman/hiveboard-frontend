@@ -18,14 +18,14 @@ export class EventItemComponent implements OnInit {
 
   ngOnInit(): void {
     this.events.begin_at = moment(this.events.begin_at).format('ddd, MMM D • YYYY @ hh:mm A');
-    this.getUser();
+    // this.getUser();
   }
 
-  getUser(){
-    this.http.getUser().subscribe(data =>{
-      this.user = data;
-    })
-  }
+  // getUser(){
+  //   this.http.getUser().subscribe(data =>{
+  //     this.user = data;
+  //   })
+  // }
 
   signUp(){
     this.token = true;
