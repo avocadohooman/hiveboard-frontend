@@ -5,6 +5,14 @@ The goal of the Hiveapp is to create a digital infoboard where all internal scho
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.0.7.	This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.0.7.
 <br>It is currently under construction. 
 
+## Prerequisites 
+
+```
+https://github.com/avocadohooman/hiveboard-frontend.git
+cd hiveboard-frontend
+npm install
+```
+
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
