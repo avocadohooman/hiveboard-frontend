@@ -31,3 +31,35 @@
 .example-full-width {
   width: 100%;
 }
+
+.example-short-width {
+  width: 30%;
+}
+
+.example-medium-width {
+  width: 40%;
+}
+
+.line {
+  display: block;
+  margin-top: 20px;
+  margin-right: 20px;
+}
+
+@media (min-width:768px) {
+  .example-short-width {
+    width: 15%;
+  }
+  .example-medium-width {
+    width: 25%;
+  }
+}
+
+@media (min-width:1024px) {
+  .example-short-width {
+    width: 10%;
+  }
+  .example-medium-width {
+    width: 15%;
+  }
+}
