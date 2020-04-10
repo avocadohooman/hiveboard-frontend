@@ -1,0 +1,69 @@
+<div class="container ">
+  <div class="d-flex flex-row-reverse pt-5">
+    <a href="#" routerLink="/" class="btn btn-primary btn-circle btn-sm"></a>
+</div>
+
+<div class="container">
+    <mat-form-field class="example-full-width">
+      <mat-label>Event Title</mat-label>
+      <input matInput placeholder="Ex. CV Workshop" value="" [(ngModel)]="name" required>
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width">
+      <mat-label>Location</mat-label>
+      <input matInput placeholder="Ex. Hive Lobby" value="" [(ngModel)]="location" required>
+    </mat-form-field>
+
+    <div class="d-flex flex-wrap justify-content-start">
+      <mat-form-field class="example-medium-width pr-3">
+        <input placeholder = "{{today_date}}" matInput [matDatepicker]="picker1" [(ngModel)]="begin_date" required>
+        <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+        <mat-datepicker #picker1></mat-datepicker>
+      </mat-form-field>
+
+      <mat-form-field class="example-short-width mr-3">
+        <mat-label>Starts At</mat-label>
+        <mat-select [(ngModel)]="begin_at" required>
+          <mat-option *ngFor="let time of times" [value]="time.value" >
+            {{ time.viewValue }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <div class = "line">-</div>
+
+      <mat-form-field class="example-short-width mr-3">
+        <mat-label>Ends At</mat-label>
+        <mat-select [(ngModel)]="end_at" required>
+          <mat-option *ngFor="let time of times" [value]="time.value" >
+            {{time.viewValue}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field class="example-medium-width pr-3">
+        <input placeholder = "{{today_date}}" matInput [matDatepicker]="picker2" [(ngModel)]="end_date" required>
+        <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+        <mat-datepicker #picker2></mat-datepicker>
+      </mat-form-field>
+    </div>
+    <mat-form-field class="example-full-width">
+      <mat-label>Organiser</mat-label>
+      <input type="text"
+      matInput
+      [formControl] = "myControl"
+      [matAutocomplete] = "auto"
+      [(ngModel)]="organiser" required>
+      <mat-autocomplete #auto = "matAutocomplete">
+        <mat-option *ngFor = "let i of filteredOptions | async" [value] = "i">
+          {{ i }}
+        </mat-option>
+      </mat-autocomplete>
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width">
+      <mat-label>Tell peolpe more about the event</mat-label>
+      <textarea matInput placeholder="Ex. This event is about ..." [(ngModel)]="description" required></textarea>
+    </mat-form-field>
+  <button class="btn-block btn-danger" (click)="onAddSubmit()">Create</button>
+</div>

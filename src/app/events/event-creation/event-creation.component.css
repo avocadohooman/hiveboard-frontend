@@ -1,0 +1,65 @@
+.btn-circle.btn-sm {
+  width: 30px;
+  height: 30px;
+  padding: 6px 0px;
+  border-radius: 35px;
+  text-align: center;
+  font-size: 12px;
+  line-height: 1.42857;
+  background-image: url('/../../../../../assets/Close\ Circle.svg');
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-color: transparent;
+  border: none;
+}
+
+.btn-danger{
+  background-color: #E39032;
+  border: none;
+  border-radius: 3px;
+  min-height: 50px;
+  font-size: larger;
+  font-weight: 300;
+}
+
+.example-form {
+  min-width: 150px;
+  max-width: 500px;
+  width: 100%;
+}
+
+.example-full-width {
+  width: 100%;
+}
+
+.example-short-width {
+  width: 30%;
+}
+
+.example-medium-width {
+  width: 40%;
+}
+
+.line {
+  display: block;
+  margin-top: 20px;
+  margin-right: 20px;
+}
+
+@media (min-width:768px) {
+  .example-short-width {
+    width: 15%;
+  }
+  .example-medium-width {
+    width: 25%;
+  }
+}
+
+@media (min-width:1024px) {
+  .example-short-width {
+    width: 10%;
+  }
+  .example-medium-width {
+    width: 15%;
+  }
+}
