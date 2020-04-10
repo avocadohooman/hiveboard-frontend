@@ -25,7 +25,7 @@
         <mat-label>Starts At</mat-label>
         <mat-select [(ngModel)]="begin_at" required>
           <mat-option *ngFor="let time of times" [value]="time.value" >
-            {{time.viewValue}}
+            {{ time.viewValue }}
           </mat-option>
         </mat-select>
       </mat-form-field>
