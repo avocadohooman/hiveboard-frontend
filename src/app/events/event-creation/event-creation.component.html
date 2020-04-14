@@ -16,7 +16,7 @@
 
     <div class="d-flex flex-wrap justify-content-start">
       <mat-form-field class="example-medium-width pr-3">
-        <input placeholder = "{{today_date}}" matInput [matDatepicker]="picker1" [(ngModel)]="begin_date" required>
+        <input placeholder = "{{today_date}}" matInput [min]="minDate" [matDatepicker]="picker1" [(ngModel)]="begin_date" required>
         <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
         <mat-datepicker #picker1></mat-datepicker>
       </mat-form-field>
@@ -42,7 +42,7 @@
       </mat-form-field>
 
       <mat-form-field class="example-medium-width pr-3">
-        <input placeholder = "{{today_date}}" matInput [matDatepicker]="picker2" [(ngModel)]="end_date" required>
+        <input placeholder = "{{today_date}}" matInput [min]="minDate" [matDatepicker]="picker2" [(ngModel)]="end_date" required>
         <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
         <mat-datepicker #picker2></mat-datepicker>
       </mat-form-field>

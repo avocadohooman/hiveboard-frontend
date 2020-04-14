@@ -33,8 +33,14 @@ export class EventCreationComponent implements OnInit {
   location: any;
   begin_at : any;
   end_at: any;
+  minDate: Date;
 
-  constructor(private _http: HttpService, private router: Router) {}
+  constructor(private _http: HttpService, private router: Router) {
+    const currentYear = new Date().getFullYear();
+    const currentDay = new Date().getDate();
+    const currentMonth = new Date().getMonth();
+    this.minDate = new Date(currentYear, currentMonth, currentDay);
+  }
 
   ngOnInit() {
     this.filteredOptions = this.myControl.valueChanges
@@ -92,34 +98,6 @@ export class EventCreationComponent implements OnInit {
   }
 
   times: Time [] = [
-    {value: "00:00", viewValue: "12:00 AM"},
-    {value: "00:15", viewValue: "12:15 AM"},
-    {value: "00:30", viewValue: "12:30 AM"},
-    {value: "00:45", viewValue: "12:45 AM"},
-    {value: "01:00", viewValue: "01:00 AM"},
-    {value: "01:15", viewValue: "01:15 AM"},
-    {value: "01:30", viewValue: "01:30 AM"},
-    {value: "01:45", viewValue: "01:45 AM"},
-    {value: "02:00", viewValue: "02:00 AM"},
-    {value: "02:15", viewValue: "02:15 AM"},
-    {value: "02:30", viewValue: "02:30 AM"},
-    {value: "02:45", viewValue: "02:45 AM"},
-    {value: "03:00", viewValue: "03:00 AM"},
-    {value: "03:15", viewValue: "03:15 AM"},
-    {value: "03:30", viewValue: "03:30 AM"},
-    {value: "03:45", viewValue: "03:45 AM"},
-    {value: "04:00", viewValue: "04:00 AM"},
-    {value: "04:15", viewValue: "04:15 AM"},
-    {value: "04:30", viewValue: "04:30 AM"},
-    {value: "04:45", viewValue: "04:45 AM"},
-    {value: "05:00", viewValue: "05:00 AM"},
-    {value: "05:15", viewValue: "05:15 AM"},
-    {value: "05:30", viewValue: "05:30 AM"},
-    {value: "05:45", viewValue: "05:45 AM"},
-    {value: "06:00", viewValue: "06:00 AM"},
-    {value: "06:15", viewValue: "06:15 AM"},
-    {value: "06:30", viewValue: "06:30 AM"},
-    {value: "06:45", viewValue: "06:45 AM"},
     {value: "07:00", viewValue: "07:00 AM"},
     {value: "07:15", viewValue: "07:15 AM"},
     {value: "07:30", viewValue: "07:30 AM"},
@@ -187,5 +165,35 @@ export class EventCreationComponent implements OnInit {
     {value: "23:00", viewValue: "11:00 PM"},
     {value: "23:15", viewValue: "11:15 PM"},
     {value: "23:30", viewValue: "11:30 PM"},
-    {value: "23:45", viewValue: "11:45 PM"}]
+    {value: "23:45", viewValue: "11:45 PM"},
+    {value: "00:00", viewValue: "12:00 AM"},
+    {value: "00:15", viewValue: "12:15 AM"},
+    {value: "00:30", viewValue: "12:30 AM"},
+    {value: "00:45", viewValue: "12:45 AM"},
+    {value: "01:00", viewValue: "01:00 AM"},
+    {value: "01:15", viewValue: "01:15 AM"},
+    {value: "01:30", viewValue: "01:30 AM"},
+    {value: "01:45", viewValue: "01:45 AM"},
+    {value: "02:00", viewValue: "02:00 AM"},
+    {value: "02:15", viewValue: "02:15 AM"},
+    {value: "02:30", viewValue: "02:30 AM"},
+    {value: "02:45", viewValue: "02:45 AM"},
+    {value: "03:00", viewValue: "03:00 AM"},
+    {value: "03:15", viewValue: "03:15 AM"},
+    {value: "03:30", viewValue: "03:30 AM"},
+    {value: "03:45", viewValue: "03:45 AM"},
+    {value: "04:00", viewValue: "04:00 AM"},
+    {value: "04:15", viewValue: "04:15 AM"},
+    {value: "04:30", viewValue: "04:30 AM"},
+    {value: "04:45", viewValue: "04:45 AM"},
+    {value: "05:00", viewValue: "05:00 AM"},
+    {value: "05:15", viewValue: "05:15 AM"},
+    {value: "05:30", viewValue: "05:30 AM"},
+    {value: "05:45", viewValue: "05:45 AM"},
+    {value: "06:00", viewValue: "06:00 AM"},
+    {value: "06:15", viewValue: "06:15 AM"},
+    {value: "06:30", viewValue: "06:30 AM"},
+    {value: "06:45", viewValue: "06:45 AM"}
+  ]
+
 }
