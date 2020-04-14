@@ -1,7 +1,7 @@
 .header {
-  text-align: center;
+  text-align: left;
   padding-top: 50px;
-  padding-bottom: 20px
+  padding-bottom: 10px
 }
 
 .float {
@@ -12,4 +12,8 @@
   bottom: 80px ;
   top: auto;
   font-size: xx-large;
+}
+
+.orange-outline{
+  border: 1px solid #E39032;
 }
