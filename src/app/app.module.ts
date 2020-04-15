@@ -24,6 +24,9 @@ import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireDatabaseModule } from '@angular/fire/database'
 import { environment } from '../environments/environment';
 import { MatSelectModule } from '@angular/material/select';
+import { FollowerListComponent } from './events/follower-list/follower-list.component';
+import { FollowerItemComponent } from './events/follower-list/follower-item/follower-item.component';
+import { FilterPipe } from './filter.pipe';
 
 
 
@@ -34,7 +37,10 @@ import { MatSelectModule } from '@angular/material/select';
     EventsListComponent,
     EventsDetailComponent,
     EventItemComponent,
-    EventCreationComponent
+    EventCreationComponent,
+    FollowerListComponent,
+    FollowerItemComponent,
+    FilterPipe
     ],
   imports: [
     BrowserModule,

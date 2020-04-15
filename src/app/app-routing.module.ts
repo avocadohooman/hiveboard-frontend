@@ -3,11 +3,13 @@ import { RouterModule, Routes } from '@angular/router';
 import { EventsDetailComponent } from './events/events-list/event-item/events-detail/events-detail.component';
 import { EventsListComponent } from './events/events-list/events-list.component';
 import { EventCreationComponent } from './events/event-creation/event-creation.component';
+import { FollowerListComponent } from './events/follower-list/follower-list.component'
 
 const routes: Routes = [
   {path: '', component: EventsListComponent},
   {path: 'event/:id', component: EventsDetailComponent},
-  {path: 'new-event', component: EventCreationComponent}
+  {path: 'new-event', component: EventCreationComponent},
+  {path: 'followers', component: FollowerListComponent}
 ]
 
 @NgModule({

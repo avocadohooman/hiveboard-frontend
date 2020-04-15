@@ -1,0 +1,18 @@
+<div class="container ">
+  <div class="d-flex flex-row-reverse pt-5">
+    <a href="#" routerLink="/" class="btn btn-primary btn-circle btn-sm"></a>
+  </div>
+  <div class="container">
+    <h2>Groups at Hive</h2>
+    <mat-form-field class="example-full-width">
+      <mat-label>Search for group</mat-label>
+      <input matInput placeholder="e.g. Hive" value="" [(ngModel)]="searchFollower">
+    </mat-form-field>
+    <app-follower-item
+      *ngFor="let group of fire_groups"
+      [group_item] = "group">
+    </app-follower-item>
+  </div>
+</div>
+
+

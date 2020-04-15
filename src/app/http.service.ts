@@ -24,6 +24,11 @@ export class HttpService {
     return this.http.get(this.baseURL)
   }
 
+  getGroups(){
+    this.items = this.db.list('groups').valueChanges();
+    return this.items;
+  }
+
   getOne(id: any){
     return this.http.get(this.baseURL+id);
   }
