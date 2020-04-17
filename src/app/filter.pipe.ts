@@ -1,22 +1,17 @@
 import { Pipe, PipeTransform } from '@angular/core';
+import { Groups } from './modules/groups/groups.module'
 
 @Pipe({
   name: 'filter'
 })
 export class FilterPipe implements PipeTransform {
 
-  transform(items: any[], searchFollower: string): any[] {
-    if (!items){
-      return [];
+  transform(group: Groups[], searchFollower: string) {
+    if (!group || !searchFollower) {
+      return group;
     }
-    if (!searchFollower){
-      return items;
-    }
-    searchFollower = searchFollower.toLocaleLowerCase();
-
-    return items.filter(it => {
-      return it.toLocaleLowerCase().include(searchFollower);
-    });
+    return group.filter(group =>
+      group.name.toLocaleLowerCase().indexOf(searchFollower.toLocaleLowerCase()) !== -1);
   }
-
 }
+

@@ -9,7 +9,7 @@
       <input matInput placeholder="e.g. Hive" value="" [(ngModel)]="searchFollower">
     </mat-form-field>
     <app-follower-item
-      *ngFor="let group of fire_groups"
+      *ngFor="let group of fire_groups | filter:searchFollower"
       [group_item] = "group">
     </app-follower-item>
   </div>
