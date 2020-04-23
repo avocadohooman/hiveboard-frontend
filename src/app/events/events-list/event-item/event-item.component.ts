@@ -13,11 +13,12 @@ export class EventItemComponent implements OnInit {
   @Input() events: any;
   user: any;
   token = false;
+  beginAt: string;
 
   constructor(private http: HttpService) { }
 
   ngOnInit(): void {
-    this.events.begin_at = moment(this.events.begin_at).format('ddd, MMM D • YYYY @ hh:mm A');
+    this.beginAt = moment(this.events.begin_at).format('ddd, MMM D • YYYY @ hh:mm A');
     // this.getUser();
   }
 

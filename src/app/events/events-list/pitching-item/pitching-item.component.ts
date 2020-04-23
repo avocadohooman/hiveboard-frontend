@@ -13,12 +13,13 @@ export class PitchingItemComponent implements OnInit{
 
   @Input() pitching_event: any;
 
+  beginAt: string;
+
   constructor(private _http: HttpService){
   }
 
   ngOnInit() : void{
-    this.pitching_event.begin_at = moment(this.pitching_event.begin_at).format('ddd, MMM D • YYYY @ hh:mm A');
-
+    this.beginAt = moment(this.pitching_event.begin_at).format('ddd, MMM D • YYYY @ hh:mm A');
   }
 
 }
