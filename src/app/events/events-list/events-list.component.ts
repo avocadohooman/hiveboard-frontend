@@ -26,9 +26,9 @@ export class EventsListComponent implements OnInit {
   }
 
   scrollLeft(){
-    this.scrollContent.nativeElement.scrollLeft -= 100;
+    this.scrollContent.nativeElement.scrollLeft -= 300;
   }
   scrollRight(){
-    this.scrollContent.nativeElement.scrollLeft += 100;
+    this.scrollContent.nativeElement.scrollLeft += 300;
   }
 }

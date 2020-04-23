@@ -37,7 +37,7 @@ a:hover {
   display: none;
 }
 
-@media(min-width: 768px){
+@media(min-width: 1024px){
   .pitching-float-left{
     position: absolute;
     display: block;
@@ -60,4 +60,6 @@ a:hover {
     background-color: white;
     color: black;
   }
+
 }
+
