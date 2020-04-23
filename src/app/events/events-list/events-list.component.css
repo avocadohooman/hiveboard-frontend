@@ -1,3 +1,4 @@
+
 .header {
   text-align: left;
   padding-top: 50px;
@@ -22,3 +23,41 @@ a:hover {
   border: 1px solid #E39032;
 }
 
+.scrolling-wrapper-flexbox {
+  display: flex;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.container{
+  position: relative;
+}
+.pitching-float-left, .pitching-float-right{
+  display: none;
+}
+
+@media(min-width: 768px){
+  .pitching-float-left{
+    position: absolute;
+    display: block;
+    right: auto;
+    left: 1%;
+    bottom: auto;
+    top: 40%;
+    font-size: larger;
+    background-color: white;
+    color: black;
+  }
+  .pitching-float-right{
+    position: absolute;
+    display: block;
+    right: auto;
+    right: 1%;
+    bottom: auto;
+    top: 40%;
+    font-size: larger;
+    background-color: white;
+    color: black;
+  }
+}

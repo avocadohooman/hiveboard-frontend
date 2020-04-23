@@ -2,7 +2,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
-import { EventsComponent } from './events/events.component';
 import { EventsListComponent } from './events/events-list/events-list.component';
 import { EventsDetailComponent } from './events/events-list/event-item/events-detail/events-detail.component';
 import { EventItemComponent } from './events/events-list/event-item/event-item.component';
@@ -27,20 +26,20 @@ import { MatSelectModule } from '@angular/material/select';
 import { FollowerListComponent } from './events/follower-list/follower-list.component';
 import { FollowerItemComponent } from './events/follower-list/follower-item/follower-item.component';
 import { FilterPipe } from './filter.pipe';
-
+import { PitchingItemComponent } from './events/events-list/pitching-item/pitching-item.component'
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    EventsComponent,
     EventsListComponent,
     EventsDetailComponent,
     EventItemComponent,
     EventCreationComponent,
     FollowerListComponent,
     FollowerItemComponent,
-    FilterPipe
+    FilterPipe,
+    PitchingItemComponent
     ],
   imports: [
     BrowserModule,

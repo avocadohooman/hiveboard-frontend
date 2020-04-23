@@ -1,0 +1,50 @@
+.bg-shadow {
+  box-shadow: 0px 3px 6px 2px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+}
+
+.pitching-container {
+  min-width: 200px;
+  min-height: 250px;
+  border-radius: 5%;
+  margin-left: 15px;
+  margin-right: 15px;
+  position: relative;
+}
+
+.date {
+  font-size: 12px;
+  padding-left: 10px;
+  padding-top: 10px;
+  color: #E39032;
+}
+h6 {
+  padding: 0px 10px 10px 10px;
+}
+
+.bottom {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+}
+
+.btn {
+  min-width: 200px;
+  min-height: 50px;
+  text-align: center;
+  padding-top: 12px;
+}
+
+.btn-secondary {
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+  background-color: #E39032;
+  border: none;
+}
+
+.interest{
+text-align: center;
+position: absolute;
+bottom: 20%;
+left: 5%;
+}
