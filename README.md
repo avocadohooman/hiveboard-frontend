@@ -1,6 +1,6 @@
 # Hiveapp
 
-The goal of the Hiveapp is to create a digital infoboard where all internal school events (created by students and Hive) are being listed and students can sign up to. The project is being developed with my good friend [Niklas Pimenoff](https://github.com/nikunicke/hiveboard-backend), who is working on the back-end. 	
+The goal of the Hiveapp is to create a digital infoboard where all internal school events (created by students and Hive) are being listed and students can sign up to. The project is being developed with my good friend [Niklas Pimenoff](https://github.com/nikunicke/), who is working on the [back-end](https://github.com/nikunicke/hiveboard-backend). 	
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.0.7.	This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.0.7.
 <br><b>It is currently under construction.</b>
