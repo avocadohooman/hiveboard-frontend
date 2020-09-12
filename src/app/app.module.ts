@@ -1,13 +1,12 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
 import { AppComponent } from './app.component';
-import { EventsListComponent } from './events/events-list/events-list.component';
-import { EventsDetailComponent } from './events/events-list/event-item/events-detail/events-detail.component';
-import { EventItemComponent } from './events/events-list/event-item/event-item.component';
+import { StartComponent } from './start/start.component';
+import { EventsDetailComponent } from './start/event-item/events-detail/events-detail.component';
+import { EventItemComponent } from './start/event-item/event-item.component';
 import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
-import { EventCreationComponent } from './events/event-creation/event-creation.component';
+import { EventCreationComponent } from './event-creation/event-creation.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatButtonModule } from '@angular/material/button'
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -20,26 +19,29 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { AngularFireModule } from '@angular/fire';
 import { AngularFireAnalyticsModule } from '@angular/fire/analytics';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
-import { AngularFireDatabaseModule } from '@angular/fire/database'
+import { AngularFireDatabaseModule } from '@angular/fire/database';
 import { environment } from '../environments/environment';
 import { MatSelectModule } from '@angular/material/select';
-import { FollowerListComponent } from './events/follower-list/follower-list.component';
-import { FollowerItemComponent } from './events/follower-list/follower-item/follower-item.component';
+import { FollowerListComponent } from './follower-list/follower-list.component';
+import { FollowerItemComponent } from './follower-list/follower-item/follower-item.component';
 import { FilterPipe } from './filter.pipe';
-import { PitchingItemComponent } from './events/events-list/pitching-item/pitching-item.component'
-
+import { PitchingItemComponent } from './start/pitching-item/pitching-item.component';
+import { UserProfileComponent } from './user-profile/user-profile.component';
+import { ApiService } from './api/api.service';
+// tslint:disable: indent
 
 @NgModule({
   declarations: [
-    AppComponent,
-    EventsListComponent,
+	AppComponent,
+	StartComponent,
     EventsDetailComponent,
     EventItemComponent,
     EventCreationComponent,
     FollowerListComponent,
     FollowerItemComponent,
     FilterPipe,
-    PitchingItemComponent
+    PitchingItemComponent,
+    UserProfileComponent
     ],
   imports: [
     BrowserModule,

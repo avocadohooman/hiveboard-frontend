@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { HttpService } from '../../../http.service';
+import { ApiService } from '../../api/api.service';
 import moment from "moment"; moment().format;
 
 
@@ -15,7 +15,7 @@ export class PitchingItemComponent implements OnInit{
 
   beginAt: string;
 
-  constructor(private _http: HttpService){
+  constructor(private _http: ApiService){
   }
 
   ngOnInit() : void{

@@ -2,9 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { map, startWith } from 'rxjs/operators';
-import { HttpService } from '../../http.service';
+import { ApiService, Event } from '../api/api.service';
 import { Router } from '@angular/router'
-import moment from "moment"; moment().format;
+import moment from "moment";import { AppComponent } from '../app.component';
+
+ moment().format;
 
 interface Time {
   value: string;
@@ -34,8 +36,9 @@ export class EventCreationComponent implements OnInit {
   begin_at : any;
   end_at: any;
   minDate: Date;
+  newEvent: Event;
 
-  constructor(private _http: HttpService, private router: Router) {
+  constructor(private apiService: ApiService, private router: Router, private appComponent: AppComponent ) {
     const currentYear = new Date().getFullYear();
     const currentDay = new Date().getDate();
     const currentMonth = new Date().getMonth();
@@ -64,23 +67,42 @@ export class EventCreationComponent implements OnInit {
   }
 
   onAddSubmit(){
-    let begin: string;
-    let end: string;
-    this.adjustTimezone(this.begin_at, 0);
-    this.adjustTimezone(this.end_at, 1);
-    begin = moment().toISOString(this.begin_date);
-    begin = begin.substr(0, begin.indexOf(":") - 2) + this.begin_at + ":" + begin.substr(12 + this.begin_at.length, begin.length);
-    end =  moment().toISOString(this.end_date);
-    end = end.substr(0, end.indexOf(":") - 2) + this.end_at + ":" + end.substr(12 + this.end_at.length, end.length);
-    let new_event = {
-      name: this.name,
-      location: this.location,
-      description: this.description,
-      organiser: this.organiser,
-      begin_date: begin,
-      end_date: end,
-    }
-    this._http.addEvent(new_event);
+    // let begin: string;
+    // let end: string;
+    // this.adjustTimezone(this.begin_at, 0);
+    // this.adjustTimezone(this.end_at, 1);
+    // begin = moment().toISOString(this.begin_date);
+    // begin = begin.substr(0, begin.indexOf(":") - 2) + this.begin_at + ":" + begin.substr(12 + this.begin_at.length, begin.length);
+    // end =  moment().toISOString(this.end_date);
+    // end = end.substr(0, end.indexOf(":") - 2) + this.end_at + ":" + end.substr(12 + this.end_at.length, end.length);
+	// let newEvent = {} as Event;
+	// newEvent = {
+    //   name: this.name,
+    //   location: this.location,
+    //   description: this.description,
+    //   organiser: this.organiser,
+    //   begin_date: begin,
+    //   end_date: end,
+	// };
+	
+	let postId: number;
+	postId = 0;
+	this.apiService.createEvent().subscribe({
+			  next: data => {
+			  },
+			  error: message => {
+				console.log('error: ' + message);
+			  },
+			  complete: () => {
+				// this.appComponent.eventBatch.data.push(newEvent);
+			  }
+	})
+	// let event = {} as Event;
+
+	// event.name = "test";
+
+	// this.appComponent.eventBatch.data.push(event);
+    // this.apiService.addEvent(new_event);
     this.router.navigate(['/']);
   }
 

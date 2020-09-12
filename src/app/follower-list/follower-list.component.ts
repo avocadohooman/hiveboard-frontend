@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpService } from 'src/app/http.service';
-import { Groups } from './../../modules/groups/groups.module'
+import { ApiService } from 'src/app/api/api.service';
+import { Groups } from './../modules/groups/groups.module';
 
 @Component({
   selector: 'app-follower-list',
@@ -12,12 +12,13 @@ export class FollowerListComponent implements OnInit {
   searchFollower: string;
   fire_groups: Groups[];
 
-  constructor(private http: HttpService) { }
+  constructor(private api: ApiService) { }
 
   ngOnInit(): void {
-    this.http.getGroups().subscribe(data =>{
-      this.fire_groups = data;
-      console.log(this.fire_groups);
-    })
+    // this.api.getGroups().subscribe(data =>{
+    //   this.fire_groups = data;
+    //   console.log(this.fire_groups);
+    // });
   }
+
 }

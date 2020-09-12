@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { HttpService } from '../../../http.service';
+import { ApiService } from '../../api/api.service';
 import moment from "moment"; moment().format;
 
 @Component({
@@ -15,7 +15,7 @@ export class EventItemComponent implements OnInit {
   token = false;
   beginAt: string;
 
-  constructor(private http: HttpService) { }
+  constructor(private http: ApiService) { }
 
   ngOnInit(): void {
     this.beginAt = moment(this.events.begin_at).format('ddd, MMM D • YYYY @ hh:mm A');

@@ -1,7 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { ActivatedRoute } from '@angular/router'
-import { HttpService } from 'src/app/http.service';
-import moment from "moment"; moment().format;
+import { ApiService } from 'src/app/api/api.service';
+import moment from 'moment'; moment().format;
 
 @Component({
   selector: 'app-events-detail',
@@ -10,29 +10,22 @@ import moment from "moment"; moment().format;
 })
 export class EventsDetailComponent implements OnInit {
 
-  id : any;
+  id: number;
   event: any;
 
-  constructor(private router: ActivatedRoute, private http: HttpService) { }
+  constructor(private router: ActivatedRoute, private api: ApiService) { }
 
   ngOnInit(): void {
     this.id = this.router.snapshot.params.id;
-    console.log(this.id);
+	console.log(this.id);
+	console.log(typeof(this.id));
     this.getOne();
-    // this.getOneFire();
   }
 
-  getOne(){
-    this.http.getOne(this.id).subscribe(data =>{
+  getOne() {
+    this.api.getOne(this.id).subscribe(data => {
       this.event = data;
       this.event.begin_at = moment(this.event.begin_at).format('ddd, MMM D @ hh:mm A');
-    })
+    });
   }
-
-  // getOneFire(){
-  //   this.http.getOneFire(this.id).subscribe(data =>{
-  //     this.event = data;
-  //     console.log(data);
-  //   })
-  // }
 }

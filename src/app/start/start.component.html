@@ -1,0 +1,17 @@
+<!-- <h3 class="header">Pitching stage</h3>
+<div class="container">
+  <div #scrollContent class="scrolling-wrapper-flexbox">
+    <app-pitching-item *ngFor= "let pitchingElement of http_event"
+    [pitching_event] = "pitchingElement">
+  </app-pitching-item>
+  </div>
+<button mat-mini-fab class="pitching-float-left" (click) = "scrollLeft( )"><</button>
+<button mat-mini-fab class="pitching-float-right" (click) = "scrollRight()">></button>
+</div> -->
+<div class="main-event-list">
+	<h3 class="header">From hivers you follow</h3>
+	<app-event-item *ngFor = "let eventElement of events?.data"
+	[events] = "eventElement">
+	</app-event-item>
+	<a mat-fab class="float" routerLink="/new-event">+</a>
+</div>
