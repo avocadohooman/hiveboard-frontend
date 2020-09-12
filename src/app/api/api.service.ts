@@ -179,10 +179,4 @@ export class ApiService {
 	console.log('URL: ', url);
     return this.http.post(url, body);
   }
-
-//   addEvent(newEvent: any) {
-//     console.log(newEvent);
-//     firebase.database().ref('events').push(newEvent);
-//   }
-
 }

@@ -16,9 +16,6 @@ export class StartComponent implements OnInit {
   constructor(private apiService: ApiService, private appComponent: AppComponent) { }
 
   ngOnInit(): void {
-    // this.apiService.getEvents().subscribe(data => {
-    //   this.http_event = data;
-    // });
 	this.appComponent.eventBatch$ = this.apiService.getEvents();
 	if (this.appComponent.amountOfEvents <= 0) {
 		this.getEvents();
