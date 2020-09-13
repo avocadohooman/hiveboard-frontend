@@ -4,27 +4,27 @@
 </div>
 
 <div class="container">
-    <mat-form-field class="example-full-width">
+	<mat-form-field [ngStyle] = "{'color': eventTitle === 'Please Choose a Title' ? 'red' : 'black'}" class="example-full-width" hintLabel="{{ 50 - eventTitle?.length }} Characters left">
       <mat-label>Event Title</mat-label>
-      <input matInput placeholder="Ex. CV Workshop" value="" [(ngModel)]="name" required>
-    </mat-form-field>
+	  <input matInput [maxLength]="50" placeholder="Ex. CV Workshop" value="" [(ngModel)]="eventTitle" required>
+	</mat-form-field>
 
-    <mat-form-field class="example-full-width">
+    <mat-form-field [ngStyle] = "{'color': eventLocation === 'Please Choose a Location' ? 'red' : 'black'}" class="example-full-width" hintLabel="{{ 50 - eventLocation?.length }} Characters left">
       <mat-label>Location</mat-label>
-      <input matInput placeholder="Ex. Hive Lobby" value="" [(ngModel)]="location" required>
+      <input matInput [maxLength]="50" placeholder="Ex. Hive Lobby" value="" [(ngModel)]="eventLocation" required>
     </mat-form-field>
 
     <div class="d-flex flex-wrap justify-content-start">
-      <mat-form-field class="example-medium-width pr-3">
-        <input placeholder = "{{today_date}}" matInput [min]="minDate" [matDatepicker]="picker1" [(ngModel)]="begin_date" required>
+      <mat-form-field  class="example-medium-width pr-3">
+        <input placeholder = "Select Start Date" matInput [min]="minDate" [matDatepicker]="picker1" [(ngModel)]="startDate" required>
         <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
         <mat-datepicker #picker1></mat-datepicker>
-      </mat-form-field>
+	  </mat-form-field>
 
-      <mat-form-field class="example-short-width mr-3">
-        <mat-label>Starts At</mat-label>
-        <mat-select [(ngModel)]="begin_at" required>
-          <mat-option *ngFor="let time of times" [value]="time.value" >
+      <mat-form-field class="example-short-width mr-3"> 
+        <mat-label >Starts At</mat-label>
+        <mat-select [(value)]="startTime" required>
+          <mat-option *ngFor="let time of times" [value]="time" >
             {{ time.viewValue }}
           </mat-option>
         </mat-select>
@@ -32,38 +32,50 @@
 
       <div class = "line">-</div>
 
-      <mat-form-field class="example-short-width mr-3">
+	  <mat-form-field class="example-medium-width pr-3">
+        <input placeholder = "Select End Date" matInput [min]="minDate" [matDatepicker]="picker2" [(ngModel)]="endDate" required>
+        <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+        <mat-datepicker #picker2></mat-datepicker>
+	  </mat-form-field>
+	  
+	  <mat-form-field class="example-short-width mr-3">
         <mat-label>Ends At</mat-label>
-        <mat-select [(ngModel)]="end_at" required>
-          <mat-option *ngFor="let time of times" [value]="time.value" >
+        <mat-select [(value)]="endTime" required>
+          <mat-option *ngFor="let time of times" [value]="time" >
             {{time.viewValue}}
           </mat-option>
         </mat-select>
-      </mat-form-field>
+	  </mat-form-field>
+	</div>
 
-      <mat-form-field class="example-medium-width pr-3">
-        <input placeholder = "{{today_date}}" matInput [min]="minDate" [matDatepicker]="picker2" [(ngModel)]="end_date" required>
-        <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
-        <mat-datepicker #picker2></mat-datepicker>
-      </mat-form-field>
-    </div>
-    <mat-form-field class="example-full-width">
-      <mat-label>Organiser</mat-label>
-      <input type="text"
-      matInput
-      [formControl] = "myControl"
-      [matAutocomplete] = "auto"
-      [(ngModel)]="organiser" required>
-      <mat-autocomplete #auto = "matAutocomplete">
-        <mat-option *ngFor = "let i of filteredOptions | async" [value] = "i">
-          {{ i }}
-        </mat-option>
-      </mat-autocomplete>
-    </mat-form-field>
+	<div class="example-large-width" *ngIf="errorDate === true">
+			<p style="color: #f44336;">Please select a Start Date, Start Time, End Date and End Time.</p>
+	</div>
 
-    <mat-form-field class="example-full-width">
-      <mat-label>Tell peolpe more about the event</mat-label>
-      <textarea matInput placeholder="Ex. This event is about ..." [(ngModel)]="description" required></textarea>
+	<div class="example-large-width" *ngIf="errorStartTime === true">
+		<p style="color: #f44336;">Error: The Start Time can't be after the End Time on the same day.</p>
+	</div>
+
+	<div class="example-large-width" *ngIf="errorStartDate === true">
+		<p style="color: #f44336;">Error: The Start Date can't be after the End Date.</p>
+	</div>
+	  
+	<mat-form-field class="example-medium-width">
+		<mat-label>Event Group</mat-label>
+		<mat-select [(value)]="selectedGroup" required> 
+			<mat-option *ngFor="let group of groups" [value]="group.value">
+				{{ group.viewValue }}
+			</mat-option>
+		</mat-select>
+	</mat-form-field>
+
+	<div class="example-large-width" *ngIf="errorGroup === true">
+		<p style="color: #f44336;">Please select a group.</p>
+	</div>
+
+    <mat-form-field [ngStyle] = "{'color': description === 'Please choose a description' ? 'red' : 'black'}" class="example-full-width" hintLabel="{{ 500 - description?.length }} Characters left">
+      <mat-label>Tell people more about the event</mat-label>
+      <textarea matInput [maxLength]="500" placeholder="Ex. This event is about ..." [(ngModel)]="description" required></textarea>
     </mat-form-field>
-  <button class="btn-block btn-danger" (click)="onAddSubmit()">Create</button>
+  <button style="margin-top: 20px;" class="btn-block btn-danger" (click)="onAddSubmit()">Create</button>
 </div>

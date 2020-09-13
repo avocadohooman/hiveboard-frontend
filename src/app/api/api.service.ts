@@ -172,9 +172,9 @@ export class ApiService {
     return this.http.get(this.baseURL + id);
   }
 
-  createEvent() {
+  createEvent(newEvent: Event) {
 	console.log('Calling createEvents()');
-	const body = {};
+	const body = newEvent;
 	const url = this.baseURL;
 	console.log('URL: ', url);
     return this.http.post(url, body);
