@@ -58,7 +58,11 @@
 
 	<div class="example-large-width" *ngIf="errorStartDate === true">
 		<p style="color: #f44336;">Error: The Start Date can't be after the End Date.</p>
-	</div>
+  </div>
+  
+  <div class="example-large-width" *ngIf="errorStartTimeTwo === true">
+    <p style="color: #f44336;">Start Time can't be in the past</p>
+  </div>
 	  
 	<mat-form-field class="example-medium-width">
 		<mat-label>Event Group</mat-label>
@@ -73,9 +77,9 @@
 		<p style="color: #f44336;">Please select a group.</p>
 	</div>
 
-    <mat-form-field [ngStyle] = "{'color': description === 'Please choose a description' ? 'red' : 'black'}" class="example-full-width" hintLabel="{{ 500 - description?.length }} Characters left">
+    <mat-form-field [ngStyle] = "{'color': description === 'Please choose a description' ? 'red' : 'black'}" class="example-full-width" hintLabel="{{ 2000 - description?.length }} Characters left">
       <mat-label>Tell people more about the event</mat-label>
-      <textarea matInput [maxLength]="500" placeholder="Ex. This event is about ..." [(ngModel)]="description" required></textarea>
+      <textarea matInput [maxLength]="2000" placeholder="Ex. This event is about ..." [(ngModel)]="description" required></textarea>
     </mat-form-field>
   <button style="margin-top: 20px;" class="btn-block btn-danger" (click)="onAddSubmit()">Create</button>
 </div>

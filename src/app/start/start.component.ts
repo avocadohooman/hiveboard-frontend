@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef, OnChanges} from '@angular/core';
 import { ApiService, EventWrapper } from '../api/api.service';
 import { AppComponent } from '../app.component';
 
@@ -17,8 +17,9 @@ export class StartComponent implements OnInit {
 
   ngOnInit(): void {
 	this.appComponent.eventBatch$ = this.apiService.getEvents();
-	if (this.appComponent.amountOfEvents <= 0) {
-		this.getEvents();
+	if (this.appComponent.amountOfEvents <= 0 || this.appComponent.newEvent === true) {
+    this.getEvents();
+    this.appComponent.newEvent = false;
 	} else {
         this.events = this.appComponent.eventBatch;
         console.log('START EVENT LIST', this.events);

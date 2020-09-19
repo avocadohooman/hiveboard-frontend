@@ -16,10 +16,12 @@ export class AppComponent {
   public amountOfEvents: number;
   public loadingEvents: boolean;
   public user$;
+  public newEvent: boolean;
 
 
   constructor(private apiService: ApiService) {
-	this.amountOfEvents = 0;
+  this.amountOfEvents = 0;
+  this.newEvent = false;
 	this.loadingEvents = false;
   }
 
@@ -30,11 +32,11 @@ export class AppComponent {
   getEvents() {
     this.loadingEvents = true;
     console.log('GETTING EVENTS IN APP.COMPONENT');
-	this.eventBatch$ = this.apiService.getEvents();
-	this.eventBatch$.subscribe({
+	  this.eventBatch$ = this.apiService.getEvents();
+	  this.eventBatch$.subscribe({
 		next: data => {
             this.eventBatch = data;
-            console.log("DATA EVENT", data, "eventBatch", this.eventBatch);
+            console.log("DATA EVENT", data, "Event Batch:", this.eventBatch);
 		},
 		error: message => {
 			console.log('error', message);

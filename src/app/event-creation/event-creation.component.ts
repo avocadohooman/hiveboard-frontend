@@ -5,6 +5,7 @@ import { map, startWith } from 'rxjs/operators';
 import { ApiService, Event } from '../api/api.service';
 import { Router } from '@angular/router'
 import moment from "moment";import { AppComponent } from '../app.component';
+import { ThrowStmt } from '@angular/compiler';
 
  moment().format;
 
@@ -143,6 +144,7 @@ export class EventCreationComponent implements OnInit {
   errorDate: boolean;
   errorStartTime: boolean;
   errorStartDate: boolean;
+  errorStartTimeTwo: boolean;
   startTime: Time;
   endDate: any;
   endTime: Time;
@@ -170,21 +172,28 @@ export class EventCreationComponent implements OnInit {
 	this.group = "";
 	this.description = "";
 	this.newEvent = {} as Event;
+	this.errorStartTime = false;
+	this.errorStartTimeTwo = false;
+	this.errorStartDate = false;
   }
 
   ngOnInit() {
       this.today_date =  moment(Date.now()).format('MMM D, YYYY');
-      this.today_time = moment(Date.now()).format('hh:mm A');
+      this.today_time = moment(Date.now()).format('HH:MM');
       const start = moment(Date.now());
       const remainder = 15 - (start.minute() % 15);
-      this.today_time = moment(start).add(remainder, "minutes").format("hh:mm A");
-      this.startTime.value = this.today_time;
-	  this.endTime.value = this.today_time;
+      this.today_time = moment(start).add(remainder, "minutes").format("HH:MM");
 	  let i = 0;
 	  while (i < this.times.length) {
 		  this.times[i].score = i;
 		  i++;
 	  }
+	  let currentTimeArray: Array<string> = [];
+	  currentTimeArray = this.today_time.split(":");
+	  console.log("currentTime Array", currentTimeArray);
+	  let currentTimeValueHour = parseInt(currentTimeArray[0]);
+	  let currentTimeValueMinute = parseInt(currentTimeArray[1])
+	  console.log("currentTimeValue", currentTimeValueHour, currentTimeValueMinute);
   }
 
   onAddSubmit(){
@@ -192,22 +201,43 @@ export class EventCreationComponent implements OnInit {
 	this.errorGroup = false;
 	this.errorStartDate = false;
 	this.errorStartTime = false;
+	console.log("today Date", this.today_date, "start date", this.startDate, "end Date", this.endDate);
 	if (this.checkInput() === 1) {
 		let begin: string;
 		let end: string;
 		this.adjustTimezone(this.startTime.value, 0);
 		this.adjustTimezone(this.endTime.value, 1);
-		begin = moment().toISOString(this.startDate);
+		console.log("today Date", this.today_date, "start date", this.startDate, "end Date", this.endDate);
+		if (this.startTime.value.length < 5) {
+			this.startTime.value = '0' + this.startTime.value;
+		}
+		if (this.endTime.value.length < 5) {
+			this.endTime.value = '0' + this.endTime.value;
+		}
+		console.log("After succesful check", this.startTime.value, this.startTime.value.length, this.endTime.value, this.endTime.value.length);
+		begin = moment(this.startDate).toISOString(true);
+		console.log("Begin", begin);
 		begin = begin.substr(0, begin.indexOf(":") - 2) + this.startTime.value + ":" + begin.substr(12 + this.startTime.value.length, begin.length);
-		end =  moment().toISOString(this.endDate);
+		end =  moment(this.endDate).toISOString(true);
+		console.log("End", end);
 		end = end.substr(0, end.indexOf(":") - 2) + this.endTime.value + ":" + end.substr(12 + this.endTime.value.length, end.length);	
 		this.newEvent.name = this.eventTitle;
 		this.newEvent.location = this.eventLocation;
 		this.newEvent.begin_at = begin;
 		this.newEvent.end_at = end;
 		this.newEvent.description = this.description;
-		// this.postRequest(this.newEvent);
-		// this.router.navigate(['/']);
+		console.log("New Event", this.newEvent);
+		if (this.postRequest(this.newEvent) === 1) {
+			// console.log("New Event with ID", this.newEvent.id);
+			// this.appComponent.eventBatch.data.push(this.newEvent);
+			// this.router.navigate(['/']);
+			this.appComponent.getEvents();
+			setTimeout(() => {
+				this.router.navigate(['/']);
+			}, 200);
+		} else {
+			console.log("Post Error");
+		}
 
 	} else {
 		console.log("error");
@@ -216,7 +246,21 @@ export class EventCreationComponent implements OnInit {
 
   checkInput():number {
 	let error: boolean = false;
-	console.log("Start Time", this.startTime.score, "End Time", this.endTime.score);
+	let currentTimeArray: Array<string> = [];
+	let currentTimeValueHour: number;
+	let currentTimeValueMinute: number;
+	let startTimeArray: Array<string> = [];
+	let startTimeValueHour: number;
+	let startTimeValueMinute: number;
+	if (this.today_time && this.startTime) {
+		currentTimeArray = this.today_time.split(":");
+		startTimeArray = this.startTime.value.split(":");
+		currentTimeValueHour = parseInt(currentTimeArray[0]);
+		currentTimeValueMinute = parseInt(currentTimeArray[1])
+		startTimeValueHour = parseInt(startTimeArray[0]);
+		startTimeValueMinute = parseInt(startTimeArray[1]);
+	}
+	console.log("currentTimeValue", currentTimeValueHour, currentTimeValueMinute, "starTimeValues", startTimeValueHour, startTimeValueMinute);
 	if (!this.eventTitle || this.eventTitle === "Please Choose a Title") {
 		this.eventTitle = "Please Choose a Title";
 		error = true;
@@ -248,24 +292,41 @@ export class EventCreationComponent implements OnInit {
 		error = true;
 		this.description = "Please choose a description";
 	}
+	if (this.startDate === this.today_date) {
+		if (startTimeValueHour < currentTimeValueHour) {
+			error = true;
+			this.errorStartTimeTwo = true;
+		}
+		if (startTimeValueHour === currentTimeValueHour) {
+			if (startTimeValueMinute < currentTimeValueMinute) {
+				error = true;
+				this.errorStartTimeTwo = true;
+			}
+		}
+	}
 	if (error === true)
 		return (0);
 	return (1);
 }
 
-  postRequest(newEvent: Event) {
-	let postId: number;
-	postId = 0;
+  postRequest(newEvent: Event) : number {
 	this.apiService.createEvent(newEvent).subscribe({
-			  next: data => {
+			  next: (data: Event) => {
+				  console.log("DATA ID", data.id);
+				  this.newEvent.id = data.id;
+				  console.log(this.newEvent.id);
+				  return (data.id);
 			  },
 			  error: message => {
 				console.log('error: ' + message);
+				return (0);
 			  },
 			  complete: () => {
-				// this.appComponent.eventBatch.data.push(newEvent);
+				  this.appComponent.newEvent = true;
+				  return (1);
 			  }
-	})
+	});
+	return (1);
   }
 
   adjustTimezone(time: string, token: number){
