@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild, ElementRef, OnChanges} from '@angular/core';
-import { ApiService, EventWrapper } from '../api/api.service';
+import { ApiService, EventWrapper, User } from '../api/api.service';
 import { AppComponent } from '../app.component';
 import moment from "moment";
 
@@ -17,10 +17,12 @@ import moment from "moment";
 	public events: EventWrapper;
 	public sortedEvents: EventWrapper;
 	public searchEvent: string;
+	public currentUser: User;
 
   constructor(private apiService: ApiService, private appComponent: AppComponent) { }
 
   ngOnInit(): void {
+	this.appComponent.getUser();
 	this.appComponent.eventBatch$ = this.apiService.getEvents();
 	if (this.appComponent.amountOfEvents <= 0 || this.appComponent.newEvent === true) {
 		this.getEvents();
@@ -45,7 +47,7 @@ import moment from "moment";
 		next: data => {
 			this.appComponent.eventBatch = data;
 			this.sortEvents();
-            console.log("DATA EVENT", data, "eventBatch", this.appComponent.eventBatch);
+			console.log("DATA EVENT", data, "eventBatch", this.appComponent.eventBatch);
 		},
 		error: message => {
 			console.log('error', message);

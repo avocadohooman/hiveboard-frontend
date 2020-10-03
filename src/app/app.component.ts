@@ -16,8 +16,8 @@ export class AppComponent {
   public amountOfEvents: number;
   public loadingEvents: boolean;
   public user$;
+  public currentUser: User;
   public newEvent: boolean;
-
 
   constructor(private apiService: ApiService) {
   this.amountOfEvents = 0;
@@ -47,5 +47,21 @@ export class AppComponent {
             console.log('Amount of Evets', this.amountOfEvents);
 		}
     });
+  }
+
+  getUser() {
+	console.log('GETTING USER INFO IN APP.COMPONENT');
+	  this.user$ = this.apiService.getUserInfo();
+	  this.user$.subscribe({
+		  next: data => {
+			  this.currentUser = data;
+		  },
+		  error: message => {
+			  console.log('error', message);
+		  },
+		  complete: () => {
+			  console.log('User ID', this.currentUser.id, 'User Name', this.currentUser.first_name);
+		  }
+	  })
   }
 }

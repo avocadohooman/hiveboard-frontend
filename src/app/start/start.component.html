@@ -9,6 +9,21 @@
 <button mat-mini-fab class="pitching-float-right" (click) = "scrollRight()">></button>
 </div> -->
 
+<div class="user-info-section">
+	<div class="events-subscribed">
+		<div>Events Subscribed</div>
+		<div>0</div>
+	</div>
+	<div class="user-profile" routerLink="/user-profile">
+		<img src="{{appComponent.currentUser?.image_url}}">
+		<div style="margin-top: 20px;">{{appComponent.currentUser?.first_name}} {{appComponent.currentUser?.last_name}}</div>
+	</div>
+	<div class="events-created">
+		<div>Events Created</div>
+		<div>0</div>
+	</div>
+</div>
+
 <div class="main-event-list">
 	<h3 class="header">From hivers you follow</h3>
 	<mat-form-field class="container">

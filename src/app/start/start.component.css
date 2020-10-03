@@ -37,6 +37,39 @@ a:hover {
   display: none;
 }
 
+.user-info-section {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: nowrap;
+	justify-content: space-between;
+	max-width: 600px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.user-profile {
+	cursor: pointer;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.user-profile img {
+	max-width: 150px;
+	height: auto;
+	border-radius: 50%;
+	box-shadow: 0px 3px 6px 2px rgba(0, 0, 0, 0.054);
+}
+
+.events-subscribed,
+.events-created {
+	display: flex;
+	flex-direction: column;
+	margin-top: auto;
+	margin-bottom: auto;
+	align-items: center;
+}
+
 @media(min-width: 1024px){
   .pitching-float-left{
     position: absolute;

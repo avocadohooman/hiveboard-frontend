@@ -171,6 +171,11 @@ export class ApiService {
   getOne(id: any) {
     return this.http.get(this.baseURL + id);
   }
+  
+  getUserInfo() {
+	console.log('Calling getUserInfo() API');
+	return this.http.get(this.userURL);
+  }
 
   createEvent(newEvent: Event) {
 	console.log('Calling createEvents()');
