@@ -234,7 +234,7 @@ export class EventCreationComponent implements OnInit {
 			this.appComponent.getEvents();
 			setTimeout(() => {
 				this.router.navigate(['/']);
-			}, 200);
+			}, 500);
 		} else {
 			console.log("Post Error");
 		}
@@ -311,11 +311,8 @@ export class EventCreationComponent implements OnInit {
 
   postRequest(newEvent: Event) : number {
 	this.apiService.createEvent(newEvent).subscribe({
-			  next: (data: Event) => {
-				  console.log("DATA ID", data.id);
-				  this.newEvent.id = data.id;
-				  console.log(this.newEvent.id);
-				  return (data.id);
+			  next: (data: any) => {
+				// this.newEvent = JSON.parse(data);
 			  },
 			  error: message => {
 				console.log('error: ' + message);
